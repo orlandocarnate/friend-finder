@@ -1,0 +1,100 @@
+const friends = [
+    {
+        "name":"Obiwan Kenobi",
+        "photo":"http://vignette1.wikia.nocookie.net/deathbattlefanon/images/7/78/Popeye.jpg/revision/latest?cb=20140816125139",
+        "scores":[
+            5,
+            3,
+            4,
+            4,
+            3,
+            4,
+            2,
+            3,
+            4,
+            2
+          ]
+      },
+      {
+        "name":"Qui-Gon Jinn",
+        "photo":"https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Goofy.svg/1200px-Goofy.svg.png",
+        "scores":[
+            4,
+            3,
+            2,
+            5,
+            5,
+            4,
+            2,
+            5,
+            4,
+            3
+          ]
+      },
+      {
+        "name":"Yoda",
+        "photo":"http://1.bp.blogspot.com/-2cQU4M-OR1Y/U0lbUtkYYuI/AAAAAAAAbiM/YB2z4iYLXbI/s1600/004.png",
+        "scores":[
+            5,
+            5,
+            4,
+            5,
+            5,
+            1,
+            2,
+            5,
+            4,
+            5
+          ]
+      },
+      {
+        "name":"Darth Sidious",
+        "photo":"https://cdn-image.foodandwine.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/cartoons-helping-kids-eat-fruit-or-veggies-fwx.jpg?itok=ecHRhY2q",
+        "scores":[
+            2,
+            1,
+            3,
+            4,
+            2,
+            1,
+            2,
+            5,
+            2,
+            1
+          ]
+      },
+      {
+        "name":"Darth Maul",
+        "photo":"https://cdn-image.foodandwine.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/cartoons-helping-kids-eat-fruit-or-veggies-fwx.jpg?itok=ecHRhY2q",
+        "scores":[
+            2,
+            1,
+            4,
+            4,
+            2,
+            1,
+            2,
+            4,
+            4,
+            1
+          ]
+      },
+      {
+        "name":"Darth Vader",
+        "photo":"https://cdn-image.foodandwine.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/cartoons-helping-kids-eat-fruit-or-veggies-fwx.jpg?itok=ecHRhY2q",
+        "scores":[
+            3,
+            1,
+            3,
+            3,
+            5,
+            1,
+            2,
+            5,
+            4,
+            3
+          ]
+      }
+      
+      
+]

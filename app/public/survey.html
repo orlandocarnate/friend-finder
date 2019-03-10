@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cantina - Express</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS & JS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <style>
+        th {
+            width: auto;
+        }
+
+        td {
+            width: 3em;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container pb-4">
+        <div class="jumbotron">
+            <h1>Star Wars Friend Finder</h1>
+            <h3>Find Your Star Wars Friend!</h3>
+            <hr>
+            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
+                    Characters</button></a>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" role="form">
+                    <div class="form-group">
+                        <label">Your Name</label>
+                            <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp"
+                                placeholder="Your name">
+                            <label">Link to your profile pic</label>
+                                <input type="text" class="form-control" id="inputPic">
+                    </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Survey Question</th>
+                                <th scope="col" class="text-center small">Strongly disagree</th>
+                                <th scope="col" class="text-center small">Disagree</th>
+                                <th scope="col" class="text-center small">Neutral</th>
+                                <th scope="col" class="text-center small">Agree</th>
+                                <th scope="col" class="text-center small">Strongly agree</th>
+                            </tr>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="text-center">1</th>
+                                <th scope="col" class="text-center">2</th>
+                                <th scope="col" class="text-center">3</th>
+                                <th scope="col" class="text-center">4</th>
+                                <th scope="col" class="text-center">5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Am the life of the party</th>
+                                <td><input type="radio" name="q1" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q1" value="2" class="form-control" required></td>
+                                <td><input type="radio" name="q1" value="3" class="form-control" required></td>
+                                <td><input type="radio" name="q1" value="4" class="form-control" required></td>
+                                <td><input type="radio" name="q1" value="5" class="form-control" required></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Feel little concern for others. </th>
+                                <td><input type="radio" name="q2" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q2" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q2" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q2" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q2" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Am always prepared.</th>
+                                <td><input type="radio" name="q3" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q3" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q3" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q3" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q3" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sympathize with others' feelings</th>
+                                <td><input type="radio" name="q4" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q4" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q4" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q4" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q4" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Leave my belongings around. </th>
+                                <td><input type="radio" name="q5" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q5" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q5" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q5" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q5" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Am relaxed most of the time.</th>
+                                <td><input type="radio" name="q6" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q6" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q6" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q6" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q6" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Get upset easily</th>
+                                <td><input type="radio" name="q7" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q7" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q7" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q7" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q7" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Have a vivid imagination</th>
+                                <td><input type="radio" name="q8" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q8" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q8" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q8" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q8" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Am quiet around strangers.</th>
+                                <td><input type="radio" name="q9" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q9" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q9" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q9" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q9" value="5" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Make people feel at ease.</th>
+                                <td><input type="radio" name="q10" value="1" class="form-control" required></td>
+                                <td><input type="radio" name="q10" value="2" class="form-control"></td>
+                                <td><input type="radio" name="q10" value="3" class="form-control"></td>
+                                <td><input type="radio" name="q10" value="4" class="form-control"></td>
+                                <td><input type="radio" name="q10" value="5" class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary btn-md" id="submit"><span
+                                class="fa fa-rocket"></span>
+                            Find Your Friend!</button>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+        <!-- MODAL -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Button trigger modal -->
+                <button id="launchModal" type="button" class="btn btn-primary" data-toggle="modal">
+                    Launch demo modal
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="resultModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Your New Friend!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="closeModal" class="btn btn-secondary"
+                                    data-dismiss="modal">Close</button>
+                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Modal -->
+                <div class="modal" id="alertModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Alert!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Please complete the form!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // close model
+        $("#closeModal").click(function () {
+            $("#resultModal").modal('hide');
+        })
+
+        // Question: What does this code do?
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            
+            // validate form first
+            function checkTextInput() {
+                if ($("#inputName") === "" || $("#inputPic") === "") {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function checkRadioGrp() {
+                for (var i = 1; i <= 10; i++) {
+                    if (!$("input[name='q" + i + "']").is(":checked")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            console.log(checkRadioGrp());
+            if (!checkRadioGrp() || !checkTextInput()) {
+                // show modal
+                console.log
+                $("#alertModal").modal('show');
+            } else {
+                // get survey array
+                let survey = [];
+                for (var i = 1; i <= 10; i++) {
+                    selected = parseInt($("input[name='q" + i + "']:checked").val());
+                    survey.push(selected);
+                }
+                // POST survey to api/friends
+                $.post("/api/friends", survey, response) {
+                    // display the response
+                    $("#new-friend").html(response.name);
+                    $("new-friend-photo").attr("src", response.photo);
+                    // show modal
+                    $("#resultModal").modal('show');
+
+                }
+                console.log(survey);
+            }
+
+        });
+
+    </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

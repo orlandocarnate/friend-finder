@@ -1,0 +1,23 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "A compatibility-based \"FriendFinder\" application. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orlandocarnate/friend-finder.git"
+  },
+  "author": "Orlando Carnate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orlandocarnate/friend-finder/issues"
+  },
+  "homepage": "https://github.com/orlandocarnate/friend-finder#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

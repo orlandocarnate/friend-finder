@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Jedi Master Finder</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1><span class="fab fa-jedi-order"></span> Jedi Master & Sith Lord Finder <span class="fab fa-galactic-republic"></span></h1>
+      <h3>Hello Padawan!</h3>
+      <h3>Will you be the apprentice of a Jedi Master or Sith Lord?</h3>
+      <h3>Please take the survey to find out!</h3>
+      <hr>
+      <a href="/survey"><button class="btn btn-primary btn-lg"><span class="fab fa-jedi-order"></span> Begin
+          Survey <span class="fab fa-galactic-republic"></span></button></a>
+    </div>
+    <div id="friends" class="row">
+
+
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    $.get("/api/friends/", function (data) {
+      console.log(data);
+      data.forEach(function (element, index) {
+        card = `
+            <div class="card">
+              <div class="card-header"><h3><strong>table ${element.name}</strong></h3></div>
+              <div class="card-body">
+                  <img class="img-rounded" src="${element.photo}">
+                  <h3><strong>Name:</strong> <span id="cust_name">${element.name}</span></h3>
+
+              </div>
+            </div> 
+            `
+        console.log(element);
+        $("#friends").append($(card));
+      });
+    })
+  </script>
+</body>
+
+</html>
