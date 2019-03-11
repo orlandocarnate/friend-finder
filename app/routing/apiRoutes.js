@@ -11,10 +11,10 @@ module.exports = function(app) {
     
     // Recieves JSON POST survey results
     app.post("/api/friends", function (req, res) {
-        var survey = req.body;
-        console.log(survey);
+
+        console.log(req.body);
         // Display the JSON to the client
-        res.json(survey);
+        res.json(req.body);
     });
 
 }

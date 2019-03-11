@@ -20,6 +20,10 @@
             width: 3em;
             text-align: center;
         }
+        #new-friend-photo {
+            width: 20em; height: 20em;
+            object-fit: cover;
+        }
     </style>
 
 </head>
@@ -39,8 +43,7 @@
                 <form method="POST" role="form">
                     <div class="form-group">
                         <label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp"
-                                placeholder="Your name">
+                            <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp">
                             <label">Link to your profile pic</label>
                                 <input type="text" class="form-control" id="inputPic">
                     </div>
@@ -156,14 +159,10 @@
                 <br>
             </div>
         </div>
+
         <!-- MODAL -->
         <div class="row">
             <div class="col-12">
-                <!-- Button trigger modal -->
-                <button id="launchModal" type="button" class="btn btn-primary" data-toggle="modal">
-                    Launch demo modal
-                </button>
-
                 <!-- Modal -->
                 <div class="modal fade" id="resultModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -176,7 +175,8 @@
                                 </button>
                             </div>
                             <div class="modal-body" id="modal-body">
-                                ...
+                                <p id="new-friend"></p>
+                                <img id="new-friend-photo" class="rounded-circle" src="">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="closeModal" class="btn btn-secondary"
@@ -220,13 +220,14 @@
         // Question: What does this code do?
         $("#submit").on("click", function (event) {
             event.preventDefault();
-            
             // validate form first
             function checkTextInput() {
-                if ($("#inputName") === "" || $("#inputPic") === "") {
-                    return false;
-                } else {
+                if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).length > 0) {
+                    console.log("both text have value - true");
                     return true;
+                } else {
+                    console.log("both text have value - false");
+                    return false;
                 }
             }
             function checkRadioGrp() {
@@ -239,26 +240,28 @@
                 }
             }
             console.log(checkRadioGrp());
-            if (!checkRadioGrp() || !checkTextInput()) {
-                // show modal
-                console.log
+            let survey = {};
+            if (!checkTextInput() || !checkRadioGrp()) {
+                // get survey array
+                console.log("radio group not validated");
                 $("#alertModal").modal('show');
             } else {
-                // get survey array
-                let survey = [];
+                let tmpArray = [];
                 for (var i = 1; i <= 10; i++) {
-                    selected = parseInt($("input[name='q" + i + "']:checked").val());
-                    survey.push(selected);
+                    tmpArray.push(parseInt($("input[name='q" + i + "']:checked").val()));
                 }
+                survey.name = $("#inputName").val();
+                survey.photo = $("#inputPic").val();
+                survey.scores = tmpArray;
                 // POST survey to api/friends
-                $.post("/api/friends", survey, response) {
+                $.post("/api/friends", survey, function (response) {
                     // display the response
                     $("#new-friend").html(response.name);
-                    $("new-friend-photo").attr("src", response.photo);
+                    $("#new-friend-photo").attr("src", response.photo);
                     // show modal
                     $("#resultModal").modal('show');
 
-                }
+                });
                 console.log(survey);
             }
 
