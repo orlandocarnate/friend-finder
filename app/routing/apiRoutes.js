@@ -12,19 +12,25 @@ module.exports = function (app) {
     // Recieves JSON POST survey results
     app.post("/api/friends", function (req, res) {
         const survey = req.body;
+        const intScores = survey.scores.map(num => parseInt(num));
+        let newFriend = {
+            name: survey.name,
+            photo: survey.photo,
+            scores: intScores
+        }
+        // add new friend to friends array of objects
         let sortedResults = [];
-
+        
         let getDiff = () => {
             // loop for each friend
             let score = 0;
             // loop through each friend
             let temp = friends.map(element => {
                 console.log (element.scores, element.name);
-                console.log (survey.scores, survey.name);
+                console.log (newFriend.scores, newFriend.name);
                 let tmpArray = [];
                 for (let i=0; i < element.scores.length; i++) {
-                    tmpArray.push(Math.abs(element.scores[i] - parseInt(survey.scores[i])));
-                    // console.log(`${element.scores[i]}- ${survey.scores[i]}`);
+                    tmpArray.push(Math.abs(element.scores[i] - newFriend.scores[i]));
                 }
                 console.log(tmpArray);
                 // sum of array from https://stackoverflow.com/questions/1230233/how-to-find-the-sum-of-an-array-of-numbers
@@ -43,6 +49,8 @@ module.exports = function (app) {
             // console.log(temp.sort( (a,b) => {return a.score - b.score} ) );
             sortedResults = temp.sort( (a,b) => {return a.score - b.score} );
             console.log(sortedResults);
+            friends.push(newFriend);
+            console.log("Friends Array: ", friends);
         }
 
         console.log(req.body);
