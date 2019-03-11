@@ -215,6 +215,7 @@
         // close model
         $("#closeModal").click(function () {
             $("#resultModal").modal('hide');
+            window.location.href = "/"; // go back home
         })
 
         // Question: What does this code do?
@@ -222,7 +223,8 @@
             event.preventDefault();
             // validate form first
             function checkTextInput() {
-                if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).length > 0) {
+                const regex = /^(.*)(\.png|\.jpg|\.jpeg|\.gif)$/g;
+                if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).length > 0 && ($("#inputPic").val().trim()).match(regex)) {
                     console.log("both text have value - true");
                     return true;
                 } else {
@@ -231,24 +233,37 @@
                 }
             }
             function checkRadioGrp() {
+                let flagArray = [];
+                let flag = false;
                 for (var i = 1; i <= 10; i++) {
-                    if (!$("input[name='q" + i + "']").is(":checked")) {
-                        return false;
+                    console.log($("input[name='q" + i + "']:checked").val());
+                    if ($("input[name='q" + i + "']:checked").val()) {
+                        console.log("All radio buttons selected - true");
+                        flagArray.push(true);
                     } else {
-                        return true;
+                        console.log("All radio buttons selected - false");
+                        flagArray.push(false);
                     }
                 }
+                console.log("Flag Array: ", flagArray);
+                // if flag array contains false send false
+                if (flagArray.includes(false)) {
+                    flag = false;
+                } else {
+                    flag = true;
+                }
+                console.log("flag: ", flag);
+                return flag;
             }
-            console.log(checkRadioGrp());
+            console.log("Check Radio group: " + checkRadioGrp());
             let survey = {};
             if (!checkTextInput() || !checkRadioGrp()) {
                 // get survey array
-                console.log("radio group not validated");
                 $("#alertModal").modal('show');
             } else {
                 let tmpArray = [];
                 for (var i = 1; i <= 10; i++) {
-                    tmpArray.push(parseInt($("input[name='q" + i + "']:checked").val()));
+                    tmpArray.push($("input[name='q" + i + "']:checked").val());
                 }
                 survey.name = $("#inputName").val();
                 survey.photo = $("#inputPic").val();
