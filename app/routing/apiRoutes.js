@@ -56,13 +56,12 @@ module.exports = function (app) {
             sortedResults = temp.sort((a, b) => { return a.score - b.score });
             console.log(sortedResults);
             friends.push(newFriend);
-            console.log("Friends Array: ", friends);
+            console.log("new friend: ", friends[friends.length-1]);
         }
 
         console.log(req.body);
         getDiff();
         // Display the JSON to the client
-        // res.json({result: results[0]});
         res.json(sortedResults[0]); // return first element of sorted array
     });
 

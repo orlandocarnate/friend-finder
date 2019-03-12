@@ -1,4 +1,5 @@
 # friend-finder
+[Website](https://oc-friend-finder.herokuapp.com)
 A compatibility-based "FriendFinder" application. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 
 ## Technology Used
@@ -6,6 +7,27 @@ A compatibility-based "FriendFinder" application. This full-stack site will take
 * [MySQL database](https://www.mysql.com/)
 * [MySQL pacakage](https://www.npmjs.com/package/mysql) Node module is a driver for MySQL. 
 * [Express package](https://www.npmjs.com/package/express) Fast, unopinionated, minimalist web framework.
+
+## Folder Structure
+```
+├───app
+│   ├───data
+│   ├───public
+│   │   └───assets
+│   └───routing
+└───node_modules
+```
+* `server.js` main node.js app that runs the server
+* `/app/data/friends.js` contains friends array with a few examples.
+* `/app/public/home.html` - main page that takes you to the survy. Also shows the latest friend added.
+* `/app/public/survey.html` - survey that asks for your name, link to profile pic, and 10 questions. Once completed an algorithm determines your friend compatibility by matching your answers to others.
+* `/app/public/assets/` contains styles.css and background images.
+* `/app/routing/apiRouting/apiRoutes.js` takes care of the GET and POST routes.
+    * A GET route with URL `/api/friends` gets JSON data of all friends in the friends array.
+    * A POST route with URL `/api/friends` handles the Form data, runs the compatibility algorithm, and returns a JSON object of the closest match.
+* `/app/routing/apiRouting/htmlRoutes.js` takes care of the HTML pages.
+    * A GET route with URL `/` sends the `home.html` page.
+    * A GET route with URL `/survey` sends the `survey.html` page.
 
 ## How to import apiRoutes.js and htmlRoutes.js to server.js
 * [Stackoverflow](https://stackoverflow.com/questions/10090414/express-how-to-pass-app-instance-to-routes-from-a-different-file)
