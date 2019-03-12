@@ -44,7 +44,9 @@
                     <table class="table table-bordered table-striped table-hover table-dark">
                         <thead>
                             <tr>
-                                <th scope="col"><h3>Survey Questions</h3></th>
+                                <th scope="col">
+                                    <h3>Survey Questions</h3>
+                                </th>
                                 <th scope="col" class="text-center small">Strongly<br>disagree</th>
                                 <th scope="col" class="text-center small">Disagree</th>
                                 <th scope="col" class="text-center small">Neutral</th>
@@ -192,8 +194,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <p>Please complete the form!</p>
+                    <div class="modal-body text-danger">
+                        <p id="alert-msg">Please complete the form!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -214,14 +216,23 @@
         // Question: What does this code do?
         $("#submit").on("click", function (event) {
             event.preventDefault();
+            let alertMsg = '';
+            let $name = ($("#inputName").val().trim());
+            let $img = $("#inputPic").val().trim();
             // validate form first
             function checkTextInput() {
                 const regex = /^(.*)(\.png|\.jpg|\.jpeg|\.gif)$/g;
-                if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).length > 0 && ($("#inputPic").val().trim()).match(regex)) {
+                if ($name.length > 0 && $img.length > 0 && $img.match(regex)) {
                     console.log("both text have value - true");
                     return true;
                 } else {
                     console.log("both text have value - false");
+                    if ($name.length === 0) {
+                        alertMsg += "Please enter your name!<br>";
+                    }
+                    if (!$img.match(regex)) {
+                        alertMsg += "Please an image with the correct file extension (.jpg, .jpeg, .png, .gif)<br>";
+                    }
                     return false;
                 }
             }
@@ -242,6 +253,7 @@
                 // if flag array contains false send false
                 if (flagArray.includes(false)) {
                     flag = false;
+                    alertMsg += "Please make sure you have completed all the questions!<br>"
                 } else {
                     flag = true;
                 }
@@ -252,14 +264,15 @@
             let survey = {};
             if (!checkTextInput() || !checkRadioGrp()) {
                 // get survey array
+                $("#alert-msg").html(alertMsg);
                 $("#alertModal").modal('show');
             } else {
                 let tmpArray = [];
                 for (var i = 1; i <= 10; i++) {
                     tmpArray.push(parseInt($("input[name='q" + i + "']:checked").val()));
                 }
-                survey.name = $("#inputName").val();
-                survey.photo = $("#inputPic").val();
+                survey.name = $name;
+                survey.photo = $img;
                 survey.scores = tmpArray;
                 // POST survey to api/friends
                 $.post("/api/friends", survey, function (response) {
