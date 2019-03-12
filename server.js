@@ -1,7 +1,8 @@
 // Dependencies
 // =============================================================
 var express = require("express");
-// var path = require("path");
+var path = require("path");
+
 
 
 // Sets up the Express App
@@ -17,6 +18,8 @@ var PORT = 3000;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// CSS and Image paths
+app.use(express.static(path.join(__dirname, "app/public/assets")));
 
 // import routes from routes folder
 require("./app/routing/apiRoutes")(app);
