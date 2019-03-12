@@ -15,7 +15,15 @@ a:link, a:visited {
     text-decoration: none;
     color: black;
 }
+a:hover {
+    color: blue;
+}
 
+.card {
+    width: 20em;
+    margin: 0 auto;
+
+}
 
 th {
     width: auto;
