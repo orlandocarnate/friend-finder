@@ -3,60 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cantina - Express</title>
+    <title>Friend Finder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Latest compiled and minified CSS & JS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-    <style>
-        th {
-            width: auto;
-        }
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-        td {
-            width: 3em;
-            text-align: center;
-        }
-        #new-friend-photo {
-            width: 20em; height: 20em;
-            object-fit: cover;
-        }
-    </style>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
 
     <div class="container pb-4">
-        <div class="jumbotron">
-            <h1>Star Wars Friend Finder</h1>
-            <h3>Find Your Star Wars Friend!</h3>
+        <div class="jumbotron bg-img text-light">
+            <h1>Friend Finder Survey Page</h1>
+            <h3>Please enter your name and a link to your profile pic. Then answer the following 10 questions to help us
+                find your new friend!</h3>
             <hr>
-            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
-                    Characters</button></a>
+            <!-- <a href="/"><button class="btn btn-primary btn-lg"><span class="fa fa-eye"></span> View
+                    Characters</button></a> -->
         </div>
         <div class="row">
             <div class="col-12">
                 <form method="POST" role="form">
-                    <div class="form-group">
-                        <label">Your Name</label>
-                            <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp">
+                    <div class="bg-dark text-light p-4">
+                        <div class="form-group">
+                            <label">Your Name</label>
+                                <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
                             <label">Link to your profile pic</label>
                                 <input type="text" class="form-control" id="inputPic">
+                        </div>
                     </div>
 
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-striped table-hover table-dark">
                         <thead>
                             <tr>
-                                <th scope="col">Survey Question</th>
-                                <th scope="col" class="text-center small">Strongly disagree</th>
+                                <th scope="col"><h3>Survey Questions</h3></th>
+                                <th scope="col" class="text-center small">Strongly<br>disagree</th>
                                 <th scope="col" class="text-center small">Disagree</th>
                                 <th scope="col" class="text-center small">Neutral</th>
                                 <th scope="col" class="text-center small">Agree</th>
-                                <th scope="col" class="text-center small">Strongly agree</th>
+                                <th scope="col" class="text-center small">Strongly<br>agree</th>
                             </tr>
                             <tr>
                                 <th scope="col"></th>
@@ -151,7 +144,7 @@
                         </tbody>
                     </table>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary btn-md" id="submit"><span
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><span
                                 class="fa fa-rocket"></span>
                             Find Your Friend!</button>
                     </div>
@@ -160,55 +153,55 @@
             </div>
         </div>
 
-        <!-- MODAL -->
         <div class="row">
-            <div class="col-12">
-                <!-- Modal -->
-                <div class="modal fade" id="resultModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Your New Friend!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" id="modal-body">
-                                <p id="new-friend"></p>
-                                <img id="new-friend-photo" class="rounded-circle" src="">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="closeModal" class="btn btn-secondary"
-                                    data-dismiss="modal">Close</button>
-                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                            </div>
-                        </div>
+            <a href="/api/friends">API Friends List</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a
+                href="https://github.com/orlandocarnate/friend-finder">GitHub Repo</a>
+        </div>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Your New Friend!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <p id="new-friend"></p>
+                        <img id="new-friend-photo" class="rounded-circle" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeModal" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                     </div>
                 </div>
-
-                <!-- Alert Modal -->
-                <div class="modal" id="alertModal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Alert!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Please complete the form!</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <!-- Alert Modal -->
+        <div class="modal" id="alertModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Alert!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please complete the form!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script type="text/javascript">

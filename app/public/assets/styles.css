@@ -1,0 +1,33 @@
+body {
+    background-image: url('pexels-blur-city2-min.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.bg-img {
+    background-size: cover;
+    background-image: url('pexels-photo-842339.jpeg');
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+
+th {
+    width: auto;
+}
+
+td {
+    width: 3em;
+    text-align: center;
+}
+
+#new-friend-photo {
+    width: 20em;
+    height: 20em;
+    object-fit: cover;
+}

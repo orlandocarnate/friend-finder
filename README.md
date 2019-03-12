@@ -40,3 +40,15 @@ Another is from Brainfall- [How Jedi/Sith Are You?](https://brainfall.com/quizze
 
 ## Pexels Free Photos
 [Pictures of People](https://www.pexels.com/photo/time-lapse-photography-of-people-walking-on-pedestrian-lane-842339/)
+
+## [Image compressor](https://imagecompressor.com/)
+
+## Heroku CLI setup
+1. `heroku login`
+2. `heroku create`
+3. `heroku info oc-friend-finder` -get info on heroku app
+4. `heroku git:remote oc-friend-finder` -setup remote for heroku
+5. `git status`
+6. `git remote -v` -shows fetch and push locations of both git and heroku
+7. `git push heroku master` -if you use origin instead of heroku it will push to GitHub instead.
+8. `heroku logs --tail` -for log errors
