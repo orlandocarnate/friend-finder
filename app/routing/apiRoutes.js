@@ -28,7 +28,6 @@ module.exports = function (app) {
         let sortedResults = [];
 
         let getDiff = () => {
-            // loop for each friend
             let score = 0;
             // loop through each friend
             let temp = friends.map(element => {
@@ -49,10 +48,8 @@ module.exports = function (app) {
                 return obj;
 
             })
-            // console.log(temp);
             console.log('Sorted:');
             // Sorted by lowest from .sort() method http://www.javascriptkit.com/javatutors/arraysort2.shtml
-            // console.log(temp.sort( (a,b) => {return a.score - b.score} ) );
             sortedResults = temp.sort((a, b) => { return a.score - b.score });
             console.log(sortedResults);
             friends.push(newFriend);
