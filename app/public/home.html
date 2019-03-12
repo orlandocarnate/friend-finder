@@ -26,22 +26,22 @@
       <a href="/survey"><button class="btn btn-primary btn-lg">Begin Survey <span
             class="fas fa-hand-point-right"></span></button></a>
     </div>
-    <div class="row text-primary">
-      <a href="/api/friends">API Friends List</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://github.com/orlandocarnate/friend-finder">GitHub Repo</a>
-    </div>
 
-    <div>
-
-    </div>
     <div id="latest"></div>
+
+    <div class="row text-primary">
+      <a href="/api/friends">API Friends List</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a
+        href="https://github.com/orlandocarnate/friend-finder">GitHub Repo</a>
+    </div>
+
   </div>
   <script type="text/javascript">
-  $(document).ready(function(){
+    $(document).ready(function () {
 
 
-    $.get("/api/latest/", function (latest) {
-      console.log(latest);
-      // data.forEach(function (element, index) {
+      $.get("/api/latest/", function (latest) {
+        console.log(latest);
+        // data.forEach(function (element, index) {
         card = `
             <div class="card">
               <div class="card-header"><h3><strong>${latest.name}</strong></h3></div>

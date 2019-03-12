@@ -1,4 +1,5 @@
 var path = require("path");
+var express = require("express");
 
 // export module
 module.exports = function (app) {
@@ -13,6 +14,9 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/survey.html"));
         console.log(__dirname);
     });
+
+    // CSS and Image paths
+    app.use(express.static(path.join(__dirname, "../public/assets")));
 
 
 }
