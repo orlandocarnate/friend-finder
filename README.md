@@ -7,7 +7,7 @@ This web app uses Bootstrap, JavaScript, and jQuery for the **front-end** and No
 ## Technology Used
 * [Node.js](https://nodejs.org/)
 * [MySQL database](https://www.mysql.com/)
-* [MySQL pacakage](https://www.npmjs.com/package/mysql) Node module is a driver for MySQL. 
+* [MySQL package](https://www.npmjs.com/package/mysql) Node module is a driver for MySQL. 
 * [Express package](https://www.npmjs.com/package/express) Fast, unopinionated, minimalist web framework.
 
 ## How to use the program
@@ -49,15 +49,14 @@ To deploy to Heroku you should modify the PORT variable otherwise it will not ru
 8. `heroku logs --tail` -for log errors
 
 ## How to import apiRoutes.js and htmlRoutes.js to server.js
-* [Stackoverflow](https://stackoverflow.com/questions/10090414/express-how-to-pass-app-instance-to-routes-from-a-different-file)
-    * to import the apiRoutes.js and the htmlRoutes.js to server.js you use `module.exports = function (app) {..}` in both js files and `require("./app/routing/apiRoutes")(app);` and `require("./app/routing/htmlRoutes")(app);` in the server.js file.
+* From [Stackoverflow](https://stackoverflow.com/questions/10090414/express-how-to-pass-app-instance-to-routes-from-a-different-file): to import the apiRoutes.js and the htmlRoutes.js to server.js you use `module.exports = function (app) {..}` in both js files and `require("./app/routing/apiRoutes")(app);` and `require("./app/routing/htmlRoutes")(app);` in the server.js file.
 
-## Get the sum of an array of integers
-From this [link](https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php) I foud you can use the `.reduce()` method on an array of integers.
+## Getting the sum of an array of integers
+From [W3Resource.com](https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php) I learned that you can use the `.reduce()` method on an array of integers.
 `score: tmpArray.reduce((partial_sum, a) => partial_sum + a)`
 
 ## Sorting an array of objects
-I Found [this code online](http://www.javascriptkit.com/javatutors/arraysort2.shtml) on how to sort the friends array by score in ascending order.
+From [JavaScriptKit.com](http://www.javascriptkit.com/javatutors/arraysort2.shtml) I learned how to sort the friends array by score in ascending order.
 `sortedResults = temp.sort((a, b) => { return a.score - b.score });`
 
 ## Form Validation
@@ -75,17 +74,16 @@ if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).l
     return false;
 }
 ```
+
 * Radio Buttons
     * I used a for loop to check if each radio group is checked or not. If checked I push true to a `flagArray`, if not push false into the `flagArray`.
     * I then check the `flagArray` to see if false is in the array using `.includes()` array method
 
+* If any of the form inputs have errors an Alert modal will pop-up showing what needs to be fixed.
 
 ## Survey questions
-[OpenPschoMetrics.org Personality Quiz](https://openpsychometrics.org/printable/big-five-personality-test.pdf)
-[Time.com Star Wars Character page]http://time.com/5063406/star-wars-character-quiz/
-Another is from Brainfall- [How Jedi/Sith Are You?](https://brainfall.com/quizzes/how-jedi-sith-are-you/)
+[OpenPschoMetrics.org Personality Quiz](https://openpsychometrics.org/printable/big-five-personality-test.pdf) - I used some of the questions from this personality quiz for the survey.
 
-## Pexels Free Photos
-[Pictures of People](https://www.pexels.com/photo/time-lapse-photography-of-people-walking-on-pedestrian-lane-842339/)
-
-## [Image compressor](https://imagecompressor.com/)
+## Other Resources
+* Pexels Free Photos [Pictures of People](https://www.pexels.com/photo/time-lapse-photography-of-people-walking-on-pedestrian-lane-842339/)
+* [Image compressor](https://imagecompressor.com/) for shring image file sizes.
