@@ -1,8 +1,7 @@
-# Friend-Finder Full Stack App
-Website: [Friend-Finder Website](https://oc-friend-finder.herokuapp.com)
-A compatibility-based "FriendFinder" application. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
+# Friend-Finder Full Stack App [LINK](https://oc-friend-finder.herokuapp.com/)
 
 ## Overview
+A compatibility-based "FriendFinder" application. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 This web app uses Bootstrap, JavaScript, and jQuery for the **front-end** and Node.js, Express.js, and Heroku server for the **back-end**. The web app is deployed to the Heroku server using Git.
 
 ## Technology Used
@@ -10,6 +9,11 @@ This web app uses Bootstrap, JavaScript, and jQuery for the **front-end** and No
 * [MySQL database](https://www.mysql.com/)
 * [MySQL pacakage](https://www.npmjs.com/package/mysql) Node module is a driver for MySQL. 
 * [Express package](https://www.npmjs.com/package/express) Fast, unopinionated, minimalist web framework.
+
+## How to use the program
+[Home Page](https://oc-friend-finder.herokuapp.com/) introduces the web app and also shows the latest addition to the `friends.js` objects array.
+[Survey Page](https://oc-friend-finder.herokuapp.com/survey) asks for your name and a link to your profile pic. You then answer 10 personality questions. If you don't fill in the form properly, such as an invalid image, you will get an alert modal describing what needs to be addressed.
+When the correct information and questions have been completed and successfully submitted, the app will determine the match the most compatible friend from the `friends` array in a modal. When the modal is closed the home page is loaded showing you as the newest addition to the friends array.
 
 ## Folder Structure
 ```
@@ -20,15 +24,15 @@ This web app uses Bootstrap, JavaScript, and jQuery for the **front-end** and No
 │   └───routing
 └───node_modules
 ```
-* `server.js` - main node.js app that runs the server
-* `/app/data/friends.js` - contains friends array with a few examples.
-* `/app/public/home.html` - main page that takes you to the survy. Also shows the latest friend added.
-* `/app/public/survey.html` - survey that asks for your name, link to profile pic, and 10 questions. Once completed an algorithm determines your friend compatibility by matching your answers to others.
-* `/app/public/assets/` - contains styles.css and background images.
-* `/app/routing/apiRouting/apiRoutes.js` - takes care of the GET and POST routes.
+- `server.js` - main node.js app that runs the server
+- `/app/data/friends.js` - contains friends array with a few examples.
+- `/app/public/home.html` - main page that takes you to the survy. Also shows the latest friend added.
+- `/app/public/survey.html` - survey that asks for your name, link to profile pic, and 10 questions. Once completed an algorithm determines your friend compatibility by matching your answers to others.
+- `/app/public/assets/` - contains styles.css and background images.
+- `/app/routing/apiRouting/apiRoutes.js` - takes care of the GET and POST routes.
     * A GET route with URL `/api/friends` - gets JSON data of all friends in the friends array.
     * A POST route with URL `/api/friends` - handles the Form data, runs the compatibility algorithm, and returns a JSON object of the closest match.
-* `/app/routing/apiRouting/htmlRoutes.js` - takes care of the HTML pages.
+ `/app/routing/apiRouting/htmlRoutes.js` - takes care of the HTML pages.
     * A GET route with URL `/` - sends the `home.html` page.
     * A GET route with URL `/survey` - sends the `survey.html` page.
 

@@ -164,15 +164,15 @@
         <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="modal-content text-center">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Your New Friend!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title text-center" id="exampleModalLongTitle">We found you a New Friend!</h5>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button> -->
                     </div>
                     <div class="modal-body" id="modal-body">
-                        <p id="new-friend"></p>
+                        <h2 id="new-friend"></h2>
                         <img id="new-friend-photo" class="rounded-circle" src="">
                     </div>
                     <div class="modal-footer">
@@ -211,7 +211,7 @@
         $("#closeModal").click(function () {
             $("#resultModal").modal('hide');
             window.location.href = "/"; // go back home
-        })
+        });
 
         // Question: What does this code do?
         $("#submit").on("click", function (event) {
@@ -265,7 +265,11 @@
             if (!checkTextInput() || !checkRadioGrp()) {
                 // get survey array
                 $("#alert-msg").html(alertMsg);
-                $("#alertModal").modal('show');
+                // $("#alertModal").modal('show');
+                $('#alertModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
             } else {
                 let tmpArray = [];
                 for (var i = 1; i <= 10; i++) {
@@ -280,7 +284,11 @@
                     $("#new-friend").html(response.name);
                     $("#new-friend-photo").attr("src", response.photo);
                     // show modal
-                    $("#resultModal").modal('show');
+                    // $("#resultModal").modal('show');
+                    $('#resultModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
 
                 });
                 console.log(survey);
