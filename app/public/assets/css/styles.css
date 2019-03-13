@@ -1,5 +1,5 @@
 body {
-    background-image: url('pexels-blur-city2-min.jpg');
+    background-image: url('/assets/images/pexels-blur-city2-min.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -8,7 +8,7 @@ body {
 
 .bg-img {
     background-size: cover;
-    background-image: url('pexels-photo-842339.jpeg');
+    background-image: url('/assets/images/pexels-photo-842339.jpeg');
 }
 
 a:link, a:visited {

@@ -4,7 +4,8 @@ var express = require("express");
 // export module
 module.exports = function (app) {
     // CSS and Image paths
-    app.use(express.static(path.join(__dirname, "../public/assets")));
+    app.use("/assets", express.static(path.join(__dirname, "../public/assets")));
+    // app.use(express.static('public')); // doesn't work
 
     // SURVEY
     app.get("/survey", function (req, res) {
@@ -17,8 +18,8 @@ module.exports = function (app) {
     });
     
     // Catch All routes to home page
-    app.get("*", function (req, res) {
-        res.redirect("/");
-    });
+    // app.get("*", function (req, res) {
+    //     res.redirect("/");
+    // });
 
 }
