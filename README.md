@@ -51,6 +51,26 @@ To deploy to Heroku you should modify the PORT variable otherwise it will not ru
 ## How to import apiRoutes.js and htmlRoutes.js to server.js
 * From [Stackoverflow](https://stackoverflow.com/questions/10090414/express-how-to-pass-app-instance-to-routes-from-a-different-file): to import the apiRoutes.js and the htmlRoutes.js to server.js you use `module.exports = function (app) {..}` in both js files and `require("./app/routing/apiRoutes")(app);` and `require("./app/routing/htmlRoutes")(app);` in the server.js file.
 
+## How the logic works
+The program compares the user's answers with those in the current friends array.
+Below, **Bruce** is the new user. **Charlie Brown** and **Lucy Van Pelt** are from the **`friends` array**.
+We loop through the `friends` array and compare each friend score array with the user's score array. Then we do a nested loop for the score array for both friend and user, find the difference, and make it an absolute number if it's negative. The difference is pushed into a temporary array. Finally we get the sum of all the numbers in the temp array.
+```
+[ 2, 1, 4, 5, 2, 2, 3, 3, 4, 3 ] 'Charlie Brown' - FROM FRIENDS ARRAY
+[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
+[ 3, 3, 1, 1, 2, 1, 1, 1, 1, 0 ] - Differences pushed into a temp array
+score: 14 - Sum of the Differences
+[ 3, 4, 3, 3, 1, 3, 5, 2, 2, 2 ] 'Lucy Van Pelt' - FROM FRIENDS ARRAY
+[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
+[ 2, 0, 0, 1, 3, 0, 3, 0, 1, 1 ] - Differences pushed into a temp array
+score: 11 - Sum of the Differences
+```
+
+Each friend is put into an object containing the friend name, image link, and score. This object is then put into another array of objects for sorting.
+
+We sort this new array of objects using the `.sort()` method and is sorted by the score. 
+In the sorted array, the FIRST element will be the closest match to the user since it is in order from the lowest to highest score.
+
 ## Getting the sum of an array of integers
 From [W3Resource.com](https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php) I learned that you can use the `.reduce()` method on an array of integers.
 `score: tmpArray.reduce((partial_sum, a) => partial_sum + a)`

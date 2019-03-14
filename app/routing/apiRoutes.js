@@ -44,7 +44,7 @@ module.exports = function (app) {
                     photo: element.photo,
                     score: tmpArray.reduce((partial_sum, a) => partial_sum + a)
                 }
-                console.log(`Difference: ${obj.score}`);
+                console.log(`Sum of Differences: ${obj.score}`);
                 return obj;
 
             })
