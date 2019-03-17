@@ -1,4 +1,5 @@
-# Friend-Finder Full Stack App [LINK](https://oc-friend-finder.herokuapp.com/)
+# Friend-Finder Full Stack App 
+[Heroku Website](https://oc-friend-finder.herokuapp.com/)
 
 ## Overview
 A compatibility-based "FriendFinder" application. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
@@ -11,8 +12,8 @@ This web app uses Bootstrap, JavaScript, and jQuery for the **front-end** and No
 * [Express package](https://www.npmjs.com/package/express) Fast, unopinionated, minimalist web framework.
 
 ## How to use the program
-[Home Page](https://oc-friend-finder.herokuapp.com/) introduces the web app and also shows the latest addition to the `friends.js` objects array.
-[Survey Page](https://oc-friend-finder.herokuapp.com/survey) asks for your name and a link to your profile pic. You then answer 10 personality questions. If you don't fill in the form properly, such as an invalid image, you will get an alert modal describing what needs to be addressed.
+The [Home Page](https://oc-friend-finder.herokuapp.com/) introduces the web app and also shows the latest addition to the `friends.js` objects array.
+The [Survey Page](https://oc-friend-finder.herokuapp.com/survey) asks for your name and a link to your profile pic. You then answer 10 personality questions. If you don't fill in the form properly, such as provide an invalid image, you will get an alert modal describing what needs to be addressed.
 When the correct information and questions have been completed and successfully submitted, the app will determine the match the most compatible friend from the `friends` array in a modal. When the modal is closed the home page is loaded showing you as the newest addition to the friends array.
 
 ## Folder Structure
@@ -24,7 +25,7 @@ When the correct information and questions have been completed and successfully 
 │   └───routing
 └───node_modules
 ```
-- `server.js` - main node.js app that runs the server
+- `/server.js` - main node.js app that runs the server
 - `/app/data/friends.js` - contains friends array with a few examples.
 - `/app/public/home.html` - main page that takes you to the survy. Also shows the latest friend added.
 - `/app/public/survey.html` - survey that asks for your name, link to profile pic, and 10 questions. Once completed an algorithm determines your friend compatibility by matching your answers to others.
@@ -35,6 +36,30 @@ When the correct information and questions have been completed and successfully 
  `/app/routing/apiRouting/htmlRoutes.js` - takes care of the HTML pages.
     * A GET route with URL `/` - sends the `home.html` page.
     * A GET route with URL `/survey` - sends the `survey.html` page.
+
+## How the logic works
+The program compares the user's answers with those in the current friends array.
+Below, **Bruce** is the new user. **Charlie Brown** and **Lucy Van Pelt** are from the **`friends` array**.
+We loop through each *friend object* in the `friends` array of objects and compare it's *score array* with the user's score array by getting the difference of each score. The friend with the lowest score will be the most compatible with the user.
+```
+[ 2, 1, 4, 5, 2, 2, 3, 3, 4, 3 ] 'Charlie Brown' - FROM FRIENDS ARRAY
+[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
+[ 3, 3, 1, 1, 2, 1, 1, 1, 1, 0 ] - Differences pushed into a temp array
+score: 14 - Sum of the Differences
+[ 3, 4, 3, 3, 1, 3, 5, 2, 2, 2 ] 'Lucy Van Pelt' - FROM FRIENDS ARRAY
+[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
+[ 2, 0, 0, 1, 3, 0, 3, 0, 1, 1 ] - Differences pushed into a temp array
+score: 11 - Sum of the Differences
+```
+
+Each friend is put into an object containing the friend name, image link, and score. This object is then put into another array of objects which is sorted from lowest score to highest using the .sort() method. The most compatible friend will be the first since it has the lowest score.
+
+## Screenshots
+Home Page:
+![Friend-Finder Home Page Screenshot](friend-finder-home-min.JPG)
+
+Survey Page:
+![Friend-Finder Survery Page Screenshot](friend-finder-survey.JPG)
 
 ## Heroku CLI setup & Deployment
 To deploy to Heroku you should modify the PORT variable otherwise it will not run on a public server.
@@ -50,26 +75,6 @@ To deploy to Heroku you should modify the PORT variable otherwise it will not ru
 
 ## How to import apiRoutes.js and htmlRoutes.js to server.js
 * From [Stackoverflow](https://stackoverflow.com/questions/10090414/express-how-to-pass-app-instance-to-routes-from-a-different-file): to import the apiRoutes.js and the htmlRoutes.js to server.js you use `module.exports = function (app) {..}` in both js files and `require("./app/routing/apiRoutes")(app);` and `require("./app/routing/htmlRoutes")(app);` in the server.js file.
-
-## How the logic works
-The program compares the user's answers with those in the current friends array.
-Below, **Bruce** is the new user. **Charlie Brown** and **Lucy Van Pelt** are from the **`friends` array**.
-We loop through the `friends` array and compare each friend score array with the user's score array. Then we do a nested loop for the score array for both friend and user, find the difference, and make it an absolute number if it's negative. The difference is pushed into a temporary array. Finally we get the sum of all the numbers in the temp array.
-```
-[ 2, 1, 4, 5, 2, 2, 3, 3, 4, 3 ] 'Charlie Brown' - FROM FRIENDS ARRAY
-[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
-[ 3, 3, 1, 1, 2, 1, 1, 1, 1, 0 ] - Differences pushed into a temp array
-score: 14 - Sum of the Differences
-[ 3, 4, 3, 3, 1, 3, 5, 2, 2, 2 ] 'Lucy Van Pelt' - FROM FRIENDS ARRAY
-[ 5, 4, 3, 4, 4, 3, 2, 2, 3, 3 ] 'Bruce' - NEW USER
-[ 2, 0, 0, 1, 3, 0, 3, 0, 1, 1 ] - Differences pushed into a temp array
-score: 11 - Sum of the Differences
-```
-
-Each friend is put into an object containing the friend name, image link, and score. This object is then put into another array of objects for sorting.
-
-We sort this new array of objects using the `.sort()` method and is sorted by the score. 
-In the sorted array, the FIRST element will be the closest match to the user since it is in order from the lowest to highest score.
 
 ## Getting the sum of an array of integers
 From [W3Resource.com](https://www.w3resource.com/javascript-exercises/javascript-array-exercise-23.php) I learned that you can use the `.reduce()` method on an array of integers.
@@ -107,3 +112,4 @@ if (($("#inputName").val().trim()).length > 0 && ($("#inputPic").val().trim()).l
 ## Other Resources
 * Pexels Free Photos [Pictures of People](https://www.pexels.com/photo/time-lapse-photography-of-people-walking-on-pedestrian-lane-842339/)
 * [Image compressor](https://imagecompressor.com/) for shring image file sizes.
+
